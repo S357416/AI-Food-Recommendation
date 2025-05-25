@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block page_title %}{% endblock %}</title>
+        <link href="{% static 'assessment4_app/styles.css' %}"rel="stylesheet" type="text/css">
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="nav_bar">
+                <nav>
+                    <a class="logo"> Food Waste in Australia</a>
+                    <a href="{% url 'homepage' %}">Home</a>
+                    <a href="{% url 'list' %}">List</a>
+                    <a href="{% url 'detail_single' 1 %}">Details</a>
+                    <a href="{% url 'data_model' %}">Data Model</a>
+                    <a href="{% url 'food_log' %}">Food Items</a>
+                    <a href="{% url 'waste_log' %}">Waste Audit</a>
+                    <a href="{% url 'login' %}">Login</a>
+
+                </nav>
+            </div>
+
+
+            <div class="content">
+            {% block page_heading %}{% endblock %}
+            {% block main_body %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

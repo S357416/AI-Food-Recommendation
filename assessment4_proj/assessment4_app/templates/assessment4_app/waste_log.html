@@ -1,0 +1,41 @@
+{% extends "assessment4_app/site_base.html" %}
+{% block page_title %}
+Data model
+{% endblock %}
+{% block page_heading %}
+<h1 class="title"> Waste Audit Log </h1>
+{% endblock %}
+
+{% block main_body %}
+{% load static %}
+<link href="{% static 'assessment4_app/form.css' %}" rel="stylesheet" type="text/css">
+    <form action="{% url 'add_wasteaudit' %}" method="post" novalidate>
+      {% csrf_token %}
+      <input type="submit" value="Create new entry">
+    </form>
+  <div class="grid-container">
+    <ul class="log-item">
+      {% for waste_log in waste_log %}
+      <li class="log-item-li">
+        <strong>Date:</strong> {{ waste_log.entry_date }}<br>
+        <strong>User:</strong> {{ waste_log.user }}<br>
+        <strong>Food Items:</strong><br>
+        <ul>
+          {% for food_item in waste_log.food_item.all %}
+          <li>{{ food_item }}</li>
+          {% endfor %}
+        </ul>
+        <strong>Waste Type:</strong> {{ waste_log.waste_type }}<br>
+        <strong>Amount:</strong> {{ waste_log.amount }}<br>
+        <form action="{% url 'edit_wasteaudit' waste_log.id %}" method="GET" style="display: inline;">
+          <button class="edit_button" type="submit">Edit</button>
+        </form>
+        <form action="{% url 'delete_waste_audit' waste_log.id %}" method="POST" style="display: inline;">
+          {% csrf_token %}
+          <button class="delete_button" type="submit"> Delete</button>
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

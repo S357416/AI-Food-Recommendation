@@ -1,0 +1,19 @@
+{% extends "assessment4_app/site_base.html" %}
+{% block page_title %}
+Data model
+{% endblock %}
+{% block page_heading %}
+<h1 class="title">Add A New Food Item</h1>
+{% endblock %}
+
+{% block main_body %}
+{% load static %}
+<link href="{% static 'assessment4_app/form.css' %}" rel="stylesheet" type="text/css">
+    <form action="/add/fooditem/done/" method="post" novalidate>
+      {% csrf_token %}
+      <table>
+        {{ myform.as_table }}
+      </table>
+      <input type="submit" value="Add Submission">
+    </form>
+{% endblock %}

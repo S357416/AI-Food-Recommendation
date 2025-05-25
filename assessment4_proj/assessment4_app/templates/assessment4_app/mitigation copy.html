@@ -1,0 +1,19 @@
+{% extends "assessment2app_app/site_base.html" %}
+
+{% block mitigation %}
+  {% if food %}
+    <p>
+        {% if food.bio %}
+           <p>
+             Mitigation for foods that have a biodegradeable container are easily composted. 
+           </p>
+        {% else %}
+           <p>
+             Mitigation for foods that DO NOT have a biodegradeable container should be recycled before composting.
+           </p>
+            {% endif %}
+
+    </p>
+    {% endif %}
+{% endblock %}
+<p>{% include 'assessment2app_app/mitigation.html' %}</p>

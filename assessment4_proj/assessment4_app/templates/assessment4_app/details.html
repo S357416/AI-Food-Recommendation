@@ -1,0 +1,69 @@
+{% extends "assessment4_app/site_base.html" %}
+{% block page_title %}
+Details
+{% endblock %}
+{% block page_heading %}
+  <h1 class="title">Details</h1>
+{% endblock %}
+
+{% block main_body %}
+<table>
+  <tr>
+    <td style="width:70%">
+      <div class="table-container">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><strong>ID </strong></td>
+              <td>{{ detail.id }}</td>
+            </tr>
+            <tr>
+              <td><strong>Name of Food</strong></td>
+              <td>{{ detail.name }}</td>
+            </tr>
+            <tr>
+              <td><strong>Type of Food</strong></td>
+              <td>{{ detail.type }}</td>
+            </tr>
+            <tr>
+              <td><strong>Biodegradeable</strong></td>
+              <td>{{ detail.bio }}</td>
+            </tr>
+            <tr>
+              <td><strong>Amount wasted per year</strong></td>
+              <td>{{ detail.amount }}</td>
+            </tr>
+            <tr>
+              <td><strong>Time for decomposition</strong></td>
+              <td>{{ detail.decomptime }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </td>
+    <td>
+        {% load static %}
+        {% if detail.name == "Bread" %}
+        <img class="food_images" src="{% static 'assessment4_app/bread.jpeg' %}">
+        {% elif detail.name == "Milk" %}
+        <img class="food_images" src="{% static 'assessment4_app/milk.jpg' %}">
+        {% elif detail.name == "Potatoes" %}
+        <img class="food_images" src="{% static 'assessment4_app/potatoes.jpg' %}">
+        {% elif detail.name == "Cheese" %}
+        <img class="food_images" src="{% static 'assessment4_app/cheese.jpg' %}">
+        {% elif detail.name == "Bagged Lettuce" %}
+        <img class="food_images" src="{% static 'assessment4_app/lettuce.jpeg' %}">
+        {% else %}
+        <img class="food_images" src="{% static 'assessment4_app/default.jpeg' %}">
+        {% endif %}
+    </td>
+</tr>
+</table>
+
+    <div class="base">
+      <p>{% include 'assessment4_app/mitigation.html' %}</p>
+    </div>
+{% endblock %}
+
+
+

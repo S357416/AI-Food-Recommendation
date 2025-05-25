@@ -1,0 +1,22 @@
+{% extends "assessment4_app/site_base.html" %}
+{% block page_title %}
+Data model
+{% endblock %}
+{% block page_heading %}
+<h1 class="title">Login</h1>
+{% endblock %}
+
+{% block main_body %}
+{% load static %}
+<link href="{% static 'assessment4_app/form.css' %}" rel="stylesheet" type="text/css">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login">
+    </form>
+   <p>A user account is required to create entries in the audit forms.</p>
+    <form action="{% url 'add_user' %}" method="post" novalidate>
+        {% csrf_token %}
+        <input type="submit" value="Create a user">
+      </form>
+{% endblock %}
